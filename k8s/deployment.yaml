@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smsf-app
+  namespace: smsf
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: smsf-app
+  template:
+    metadata:
+      labels:
+        app: smsf-app
+    spec:
+      containers:
+      - name: smsf-app
+        image: nirav1611/smsf-app:latest   # ✅ updated image
+        imagePullPolicy: Always            # 🔥 always pull latest image
+        ports:
+        - containerPort: 3000
